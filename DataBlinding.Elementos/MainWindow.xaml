@@ -10,15 +10,15 @@
         <Label Content="Escriba algo:"
                Margin="8,0"/>
         <TextBox Margin="8,4"
-                 x:Name="textoTextBox"
-                 TextChanged="textoTextBox_TextChanged"/>
+                 x:Name="textoTextBox"/>
         <StackPanel Margin="8">
             <TextBlock Margin="8"
                        Text="Texto escrito:"/>
             <TextBlock FontStyle="Italic"
                        HorizontalAlignment="Center"
                        Margin="8"
-                       x:Name="textoTextBlock"/>
+                       x:Name="textoTextBlock"
+                       Text="{Binding ElementName=textoTextBox, Path=Text}"/>
 
         </StackPanel>
     </StackPanel>

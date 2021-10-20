@@ -25,9 +25,6 @@ namespace DataBlinding.Elementos
             InitializeComponent();
         }
 
-        private void textoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            textoTextBlock.Text = textoTextBox.Text;
-        }
+        
     }
 }
