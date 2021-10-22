@@ -2,6 +2,7 @@
 using System.Windows;
 using DataBinding.ObjetoSimple.Model;
 
+
 namespace DataBinding.ObjetoSimple
 {
    
@@ -17,7 +18,8 @@ namespace DataBinding.ObjetoSimple
                 Title = "Reunion de academia",
                 Date = new DateTime(2021, 10, 22)
             };
-            UpdateUI();
+            //UpdateUI();
+            DataContext = evento;
         }
 
         private void UpdateUI()
@@ -30,7 +32,8 @@ namespace DataBinding.ObjetoSimple
         {
             evento.Title = evento.Title.ToUpper();
             evento.Date = evento.Date.AddDays(1);
-            UpdateUI();
+            //UpdateUI();
+
         }
     }
 }
