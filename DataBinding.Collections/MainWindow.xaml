@@ -41,7 +41,8 @@
                        VerticalAlignment="Center"/>
                 <TextBox Margin="2"
                          VerticalAlignment="Center"
-                         x:Name="userTextBox"/>
+                         x:Name="userTextBox"
+                         Text="{Binding Name}"/>
 
 
             </DockPanel>
@@ -50,6 +51,7 @@
         <ListBox SelectionMode="Single"
                  DisplayMemberPath="Name"
                  x:Name="usersListBox"
-                 SelectionChanged="usersListBox_SelectionChanged" />
+                 ItemsSource="{Binding}"
+                 IsSynchronizedWithCurrentItem="True"/>
     </DockPanel>
 </Window>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace DataBinding.Collections
 {
@@ -9,17 +10,18 @@ namespace DataBinding.Collections
     public partial class MainWindow : Window
     {
 
-        private List<User> users;
+        private ObservableCollection<User> users;
 
         public MainWindow()
         {
             InitializeComponent();
             LoadUsers();
-            usersListBox.ItemsSource = users;
+            //usersListBox.ItemsSource = users;
+            DataContext = users;
         }
         private void LoadUsers()
         {
-            users = new List<User>();
+            users = new ObservableCollection<User>();
             users.Add(new User { Name = "Peter Parker" });
             users.Add(new User { Name = "Tony Stark" });
             users.Add(new User { Name = "Natasha Romanoff" });
@@ -27,13 +29,10 @@ namespace DataBinding.Collections
         }
         private void addUserButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(userTextBox.Text))
-            {
-                User user = new User { Name = userTextBox.Text };
+                User user = new User { Name = "Nuevo usuario" };
                 users.Add(user);
                 usersListBox.SelectedItem = user;
                 UpdateView();
-            }
 
         }
         private void changeUserButton_Click(object sender, RoutedEventArgs e)
@@ -41,7 +40,7 @@ namespace DataBinding.Collections
             if(usersListBox.SelectedItem != null)
             {
                 User user = usersListBox.SelectedItem as User;
-                user.Name = userTextBox.Text;
+                //user.Name = userTextBox.Text;
                 usersListBox.SelectedItem = user;
                 UpdateView();
 
@@ -60,7 +59,7 @@ namespace DataBinding.Collections
 
         private void UpdateView()
         {
-            userTextBox.Text = string.Empty;
+            //userTextBox.Text = string.Empty;
             usersListBox.Items.Refresh();
             if (users.Count > 0)
             {
@@ -75,12 +74,5 @@ namespace DataBinding.Collections
             }
         }
 
-        private void usersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(usersListBox.SelectedItem != null)
-            {
-                userTextBox.Text = (usersListBox.SelectedItem as User).Name;
-            }
-        }
     }
 }
